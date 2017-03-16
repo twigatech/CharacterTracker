@@ -2,21 +2,37 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
+import Immuttable from 'immutable';
+import Stats from './CharacterStatsComponent.jsx';
 
-let yeomanImage = require('../images/yeoman.png');
+let charStats = new Immuttable.Map({
+  wis: 15,
+  str: 18,
+  cha: 19,
+  dex: 10,
+  con: 14,
+  int: 16
+});
 
-class AppComponent extends React.Component {
+class characterSheet extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {stats: charStats};
+  }
+
+  bonus = () => {
+    this.setState({
+      stats: this.state.stats.set('wis', 19)
+    });
+  }
+
   render() {
-    return (
-      <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
-      </div>
-    );
+    const stats = this.state.stats;
+    return <div onClick={this.bonus}> <Stats characterStats={stats} /></div>;
   }
 }
 
-AppComponent.defaultProps = {
+characterSheet.defaultProps = {
 };
 
-export default AppComponent;
+export default characterSheet;
