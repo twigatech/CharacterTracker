@@ -28,7 +28,8 @@ class characterSheet extends React.Component {
 
   render() {
     const stats = this.state.stats;
-    return <div onClick={this.bonus}> <Stats characterStats={stats} /></div>;
+    return <div className="charactersheet-component"> 
+      <div onClick={this.bonus}> <Stats characterStats={stats} /></div></div>;
   }
 }
 

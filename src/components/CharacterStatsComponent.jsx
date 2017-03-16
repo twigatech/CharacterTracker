@@ -12,7 +12,7 @@ class CharacterStatsComponent extends React.Component {
 
   render() {
     return (
-      <div className="stats">
+      <div className="characterstats-component">
         <div className="statTitle"><b>Stats</b></div>
         <ul>
           <li>Strength: {this.props.characterStats.get('str')}</li>
